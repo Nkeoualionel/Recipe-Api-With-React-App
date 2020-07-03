@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
+import Recipe from './Recipe'
 
 const App = () => {
 
@@ -19,7 +20,7 @@ const App = () => {
     const response = await fetch(`https://api.edamam.com/search?q=chicken&app_id=${APP_ID}&app_key=${APP_KEY}`)
     const data = await response.json();
     setRecipes(data.hits);
-    console.log(data);
+    console.log(data.hits);
   }
 
   return (
@@ -30,7 +31,14 @@ const App = () => {
                 className="search-button">Search</button>
       </form>
 
-  <h1 onClick={() => setCounter(counter + 1)}>{counter}</h1>
+      {recipes.map(recipe => (
+
+          <Recipe 
+                title={recipe.recipe.label}
+                calories={recipe.recipe.calories}
+                image={recipe.recipe.image}/>
+
+      ))}
     </div>
   );
 }
