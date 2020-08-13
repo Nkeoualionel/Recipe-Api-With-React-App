@@ -40,7 +40,7 @@ const App = () => {
       <form className="search-form" onSubmit={getSearchQuery}>
         <input type="text" className="search-bar" value={search} onChange={updateSearch}/>
         <button type="submit"
-                className="search-button">Search</button>
+                className="search-button">Search movie</button>
       </form>
 
         <div className="recipes">
